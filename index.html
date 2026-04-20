@@ -37,8 +37,6 @@
       width: clamp(180px, 28vw, 320px);
       height: auto;
       display: block;
-      filter: invert(1);
-      mix-blend-mode: multiply;
       opacity: 0.88;
     }
     @keyframes fadeUp {
@@ -78,7 +76,7 @@
     .panel:hover .panel-tag::before { color: rgba(255,255,255,0.45); }
     .panel:hover .panel-cta     { background: var(--cream); border-color: var(--cream); color: var(--black); }
     .panel:hover .arrow         { opacity: 1; transform: translateX(0); }
-    .panel:hover .panel-logo    { filter: invert(1) brightness(1.2); mix-blend-mode: screen; opacity: 0.95; }
+    .panel:hover .panel-logo    { filter: invert(1); opacity: 0.95; }
 
     .panel-content { position: relative; z-index: 2; }
 
@@ -87,8 +85,6 @@
       height: auto;
       margin-bottom: 2.8rem;
       display: block;
-      filter: invert(1);
-      mix-blend-mode: multiply;
       opacity: 0.85;
       transition: filter var(--trans), opacity var(--trans);
     }
