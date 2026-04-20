@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team | The Re:think Lab</title>
+  <meta name="description" content="Meet Sanam Thakur, Kara Glassman, Christina Chen-Cohen and the Re:think Lab team. Coaches in 7 countries. Clients across 3 continents."/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #FAFAF8; --cream: #F2EDE4; --light: #EAE5DC; --black: #111110;
+      --orange: #E8622A; --teal: #2A7B6F; --navy: #1B2A4A; --indigo: #3D4F7C;
+      --green: #2D4A3A; --yellow: #F5B800; --gray: #777572; --border: #E0DDD7;
+      --font: 'Plus Jakarta Sans', sans-serif; --body: 'Inter', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--white); color: var(--black); overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(250,250,248,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 3rem; height: 66px; display: flex; align-items: center; justify-content: space-between; }
+    nav.scrolled { box-shadow: 0 1px 16px rgba(0,0,0,0.06); }
+    .nav-left { display: flex; align-items: center; gap: 2rem; }
+    .nav-back { font-family: var(--font); font-size: 0.55rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; text-decoration: none; padding-right: 2rem; border-right: 1px solid var(--border); transition: color 0.2s; }
+    .nav-back:hover { color: var(--orange); }
+    .nav-logo { font-family: var(--font); font-size: 1.1rem; font-weight: 800; color: var(--black); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo .o { color: var(--orange); } .nav-logo .lab { color: var(--teal); }
+    .nav-links { display: flex; list-style: none; }
+    .nav-item > a { display: block; padding: 0 0.85rem; height: 66px; line-height: 66px; font-family: var(--font); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #888; text-decoration: none; transition: color 0.2s; white-space: nowrap; }
+    .nav-item > a:hover, .nav-item > a.active { color: var(--orange); }
+    .nav-cta { font-family: var(--font); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.65rem 1.4rem; background: var(--orange); color: white; text-decoration: none; }
+    .nav-cta:hover { background: #c94e1e; }
+
+    /* HERO */
+    .page-hero { background: var(--cream); padding: clamp(8rem,14vw,14rem) clamp(2rem,6vw,6rem) clamp(4rem,7vw,7rem); text-align: center; }
+    .hero-tag { display: inline-block; font-family: var(--font); font-size: 0.5rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--teal); background: rgba(42,123,111,0.12); padding: 0.4rem 0.9rem; margin-bottom: 2rem; }
+    .sh1 { font-family: var(--font); font-size: clamp(2.5rem,5vw,5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.035em; color: var(--black); }
+    .italic-accent { font-style: italic; color: var(--orange); }
+    .hero-stat { font-family: var(--font); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-top: 2rem; }
+
+    /* LEADER SECTIONS */
+    .leader-section { padding: clamp(4rem,7vw,7rem) clamp(2rem,6vw,6rem); }
+    .leader-grid { display: grid; grid-template-columns: 55% 45%; gap: 5rem; align-items: start; }
+    .leader-grid.reverse { grid-template-columns: 45% 55%; }
+    .leader-grid.reverse .leader-copy { order: 2; }
+    .leader-grid.reverse .leader-photo-wrap { order: 1; }
+    .leader-eyebrow { font-family: var(--font); font-size: 0.5rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.8rem; }
+    .leader-name { font-family: var(--font); font-size: clamp(2rem,4vw,3.5rem); font-weight: 800; color: var(--black); letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.4rem; }
+    .leader-pronounce { font-size: 0.72rem; font-style: italic; color: var(--gray); margin-bottom: 1.8rem; }
+    .leader-bio { font-size: 0.85rem; font-weight: 300; color: var(--gray); line-height: 1.85; margin-bottom: 1.8rem; }
+    .leader-bio p + p { margin-top: 1rem; }
+    .creds-label { font-family: var(--font); font-size: 0.5rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); margin-bottom: 0.8rem; margin-top: 1.5rem; }
+    .creds-list { list-style: none; }
+    .creds-list li { font-size: 0.75rem; font-weight: 300; color: var(--gray); padding: 0.4rem 0; border-bottom: 1px solid var(--light); display: flex; gap: 0.6rem; }
+    .creds-list li::before { content: '✓'; color: var(--teal); font-size: 0.65rem; flex-shrink: 0; margin-top: 1px; }
+    .leader-links { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .leader-link { font-family: var(--font); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.2s, color 0.2s; }
+    .leader-link:hover { gap: 0.7rem; color: var(--orange); }
+    .leader-photo-wrap { position: sticky; top: 100px; }
+    .leader-photo { width: 100%; aspect-ratio: 4/5; background: var(--light); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--gray); font-style: italic; overflow: hidden; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    footer { background: var(--black); padding: clamp(3rem,5vw,5rem) clamp(2rem,6vw,6rem); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-logo { font-family: var(--font); font-size: 1rem; font-weight: 800; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: -0.02em; display: block; margin-bottom: 0.8rem; }
+    .footer-logo .o { color: var(--orange); } .footer-logo .lab { color: var(--teal); }
+    .footer-tagline { font-size: 0.75rem; font-weight: 300; color: rgba(255,255,255,0.35); line-height: 1.6; margin-bottom: 1.2rem; }
+    .footer-socials { display: flex; gap: 0.8rem; }
+    .footer-social { color: rgba(255,255,255,0.3); transition: color 0.2s; display: flex; }
+    .footer-social:hover { color: var(--orange); }
+    .footer-col-label { font-family: var(--font); font-size: 0.5rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1.2rem; }
+    .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { font-family: var(--font); font-size: 0.62rem; font-weight: 500; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.52rem; color: rgba(255,255,255,0.2); font-family: var(--font); letter-spacing: 0.08em; }
+
+    @media(max-width:900px) { .leader-grid, .leader-grid.reverse { grid-template-columns: 1fr; } .leader-grid.reverse .leader-copy, .leader-grid.reverse .leader-photo-wrap { order: unset; } .leader-photo-wrap { position: relative; top: auto; } .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    @media(max-width:768px) { nav { padding: 0 1.5rem; } .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="nav-left">
+    <a href="rethink-lab.html" class="nav-back">← Re:think Lab</a>
+    <a href="rethink-lab.html" class="nav-logo">the re<span class="o">:</span>think <span class="lab">lab</span></a>
+  </div>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="lab-who-we-serve.html">Who We Work With</a></li>
+    <li class="nav-item"><a href="lab-approach.html">Our Philosophy</a></li>
+    <li class="nav-item"><a href="lab-how-we-work.html">How We Work</a></li>
+    <li class="nav-item"><a href="lab-team.html" class="active">Team</a></li>
+    <li class="nav-item"><a href="lab-contact.html">Contact</a></li>
+  </ul>
+  <a href="lab-contact.html" class="nav-cta">Book a Strategy Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-tag">The Team</div>
+  <h1 class="sh1 reveal" style="max-width:760px;margin:0 auto;">A global team of coaches<br>who've <span class="italic-accent">lived the work they teach.</span></h1>
+  <div class="hero-stat reveal" style="transition-delay:.1s">Coaches in 7 countries · Clients across 3 continents</div>
+</section>
+
+<!-- SANAM -->
+<section class="leader-section" style="background:var(--white);">
+  <div class="leader-grid reveal">
+    <div class="leader-copy">
+      <div class="leader-eyebrow">Founder & CEO</div>
+      <h2 class="leader-name">Sanam Thakur</h2>
+      <div class="leader-pronounce">Pronounced: "Sun in the sky — ummm"</div>
+      <div class="leader-bio">
+        <p>Sanam spent 15 years inside corporate and start-up environments — including 8 years in management and senior management at DFS Group, a subsidiary of LVMH — before redirecting her career toward the work she cared about most: helping people lead better.</p>
+        <p>After living in the US for 20 years and in Hong Kong and Taiwan for nearly 18 years, she brings a rare cross-cultural fluency to her coaching practice. She speaks conversational Mandarin and Hindi. She is a mother to two daughters. She has partnered with leading therapists in Hong Kong to integrate a comprehensive mental health perspective into her coaching work — because lasting leadership development can't happen without it.</p>
+        <p>Sanam's coaching style is highly dynamic and customized to each client's learning style: where they are in their professional journey, what they're trying to achieve in this session, and where they want to be long-term. She doesn't believe in one-size-fits-all. She doesn't believe in surface-level.</p>
+      </div>
+      <div class="creds-label">Accreditations</div>
+      <ul class="creds-list">
+        <li>Master of Liberal Arts in Psychology (in progress) — Harvard University</li>
+        <li>ICF-Certified Associate Certified Coach (ACC)</li>
+        <li>IPEC Certified Professional Coach (CPC)</li>
+        <li>Energy Leadership™ Index Master Practitioner (ELI-MP)</li>
+        <li>B.A., International Development — UC Berkeley</li>
+      </ul>
+      <div class="leader-links">
+        <a href="https://www.linkedin.com/in/sanamthakur/" target="_blank" rel="noopener" class="leader-link">LinkedIn →</a>
+        <a href="lab-contact.html" class="leader-link">Book a call with Sanam →</a>
+      </div>
+    </div>
+    <div class="leader-photo-wrap">
+      <div class="leader-photo" style="border-bottom:4px solid var(--teal);"><!-- INSERT SANAM PHOTO --><span>Add photo of Sanam</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- KARA -->
+<section class="leader-section" style="background:var(--cream);">
+  <div class="leader-grid reverse reveal">
+    <div class="leader-photo-wrap">
+      <div class="leader-photo" style="border-bottom:4px solid var(--orange);"><!-- INSERT KARA PHOTO --><span>Add photo of Kara</span></div>
+    </div>
+    <div class="leader-copy">
+      <div class="leader-eyebrow">CCO & Lead Coach</div>
+      <h2 class="leader-name">Kara Glassman</h2>
+      <div class="leader-bio">
+        <p>Kara has spent her career asking one question: why do intelligent, capable people disengage at work — and what can be done about it?</p>
+        <p>After redefining her own version of professional success, she pursued a Master's in Industrial and Organizational Psychology with a clear mission: to improve people's experiences in the workplace, where most of us spend the majority of our waking lives.</p>
+        <p>She has worked with Fortune 500 companies across industries, but her truest passion is supporting leaders as they navigate personal and professional growth — helping them find a path that not only aligns with their goals, but feels genuinely and authentically their own. She doesn't believe in generic. She believes in honest.</p>
+      </div>
+      <div class="creds-label">Accreditations</div>
+      <ul class="creds-list">
+        <li>ICF-Certified Associate Certified Coach (ACC)</li>
+        <li>IPEC Certified Professional Coach (CPC)</li>
+        <li>Energy Leadership™ Index Master Practitioner (ELI-MP)</li>
+        <li>Master of Science, Industrial and Organizational Psychology</li>
+        <li>B.A., Business Management — Franklin and Marshall College</li>
+      </ul>
+      <div class="leader-links">
+        <a href="https://www.linkedin.com/in/kara-glassman/" target="_blank" rel="noopener" class="leader-link">LinkedIn →</a>
+        <a href="lab-contact.html" class="leader-link">Book a call with Kara →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHRISTINA -->
+<section class="leader-section" style="background:var(--white);">
+  <div class="leader-grid reveal">
+    <div class="leader-copy">
+      <div class="leader-eyebrow">Chief Marketing Officer</div>
+      <h2 class="leader-name">Christina Chen-Cohen</h2>
+      <div class="leader-bio">
+        <p>Christina has over 15 years of experience in brand marketing, the majority of which she spent building brands and expanding their presence across APAC. She started her APAC journey as a brand strategy consultant at Interbrand Singapore, where she worked with hospitality, airline, fine jewelry, and banking brands.</p>
+        <p>Wanting a more hands-on approach and to see her work come to fruition, she transitioned into in-house leadership roles, leading marketing for LVMH beauty brands including Sephora, Fresh, and Kendo. Building brands she believes in and connecting them to people remains a driving force in her career.</p>
+        <p>Christina was born and raised in New York and moved to Asia — Shanghai, Singapore, and Hong Kong — in 2009, and isn't quite ready to return. She speaks conversational Shanghainese and Mandarin, and is currently taking lessons to keep up with her two kids.</p>
+      </div>
+      <div class="creds-label">Background</div>
+      <ul class="creds-list">
+        <li>Interbrand Singapore — Brand Strategy Consultant</li>
+        <li>Sephora, Fresh & Kendo (LVMH) — Marketing Leadership</li>
+        <li>15+ years across APAC brand marketing</li>
+      </ul>
+    </div>
+    <div class="leader-photo-wrap">
+      <div class="leader-photo" style="border-bottom:4px solid var(--indigo);"><!-- INSERT CHRISTINA PHOTO --><span>Add photo of Christina</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="rethink-lab.html" class="footer-logo">the re<span class="o">:</span>think <span class="lab">lab</span></a>
+      <div class="footer-tagline">Results based in possibilities.</div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/sanamthakur" target="_blank" rel="noopener" class="footer-social" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/therethinkcoach" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+    </div>
+    <div><div class="footer-col-label">Pages</div><div class="footer-links"><a href="lab-who-we-serve.html">Who We Work With</a><a href="lab-approach.html">Our Philosophy</a><a href="lab-how-we-work.html">How We Work</a><a href="lab-team.html">Team</a><a href="lab-contact.html">Contact</a></div></div>
+    <div><div class="footer-col-label">Contact</div><div class="footer-links"><a href="mailto:Sanam@theRethink.com">Sanam@theRethink.com</a><a href="https://www.instagram.com/therethinkcoach" target="_blank">@theRethinkCoach</a></div></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 The Re:think Lab. All rights reserved.</div><div class="footer-copy">HK · SG · AUS · UK · USA · IND</div></div>
+</footer>
+<script>
+  window.addEventListener('scroll', () => { document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 80); });
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

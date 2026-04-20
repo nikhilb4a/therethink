@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Re:think</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F2EDE4;
+      --black: #1A1A18;
+      --warm-gray: #C8BFB0;
+      --green: #02391f;
+      --orange: #ff6b35;
+      --trans: 0.65s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      overflow: hidden;
+    }
+
+    /* ── INTRO ── */
+    #intro {
+      position: fixed; inset: 0;
+      background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+    #intro.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .intro-logo { text-align: center; animation: fadeUp 1s ease forwards; }
+    .intro-logo img {
+      width: clamp(180px, 28vw, 320px);
+      height: auto;
+      display: block;
+      filter: invert(1);
+      mix-blend-mode: multiply;
+      opacity: 0.88;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SPLIT ── */
+    #split { display: flex; height: 100vh; width: 100vw; }
+
+    .panel {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 5vw, 5.5rem) clamp(2rem, 5vw, 5rem);
+      cursor: pointer;
+      overflow: hidden;
+      transition: flex var(--trans);
+    }
+    .panel::before {
+      content: '';
+      position: absolute; inset: 0;
+      opacity: 0;
+      transition: opacity var(--trans);
+    }
+    #panel-individual { border-right: 1px solid var(--warm-gray); }
+    #panel-individual::before { background: var(--green); }
+    #panel-business::before  { background: var(--orange); }
+
+    .panel:hover { flex: 1.45; }
+    .panel:hover::before { opacity: 1; }
+    .panel:hover .panel-label   { color: rgba(255,255,255,0.55); }
+    .panel:hover .panel-title   { color: white; }
+    .panel:hover .panel-tag     { color: rgba(255,255,255,0.7); }
+    .panel:hover .panel-tag::before { color: rgba(255,255,255,0.45); }
+    .panel:hover .panel-cta     { background: var(--cream); border-color: var(--cream); color: var(--black); }
+    .panel:hover .arrow         { opacity: 1; transform: translateX(0); }
+    .panel:hover .panel-logo    { filter: invert(1) brightness(1.2); mix-blend-mode: screen; opacity: 0.95; }
+
+    .panel-content { position: relative; z-index: 2; }
+
+    .panel-logo {
+      width: clamp(130px, 20vw, 220px);
+      height: auto;
+      margin-bottom: 2.8rem;
+      display: block;
+      filter: invert(1);
+      mix-blend-mode: multiply;
+      opacity: 0.85;
+      transition: filter var(--trans), opacity var(--trans);
+    }
+    .panel-label {
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; color: #aaa; margin-bottom: 0.7rem;
+      transition: color var(--trans);
+    }
+    .panel-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: clamp(3rem, 6.5vw, 6.5rem);
+      line-height: 0.95; letter-spacing: -0.035em;
+      color: var(--black); transition: color var(--trans); margin-bottom: 2rem;
+    }
+    .panel-tags { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2.8rem; }
+    .panel-tag {
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #999;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: color var(--trans);
+    }
+    .panel-tag::before {
+      content: '+'; font-weight: 800; font-size: 0.8rem;
+      color: #ccc; line-height: 1; transition: color var(--trans);
+    }
+    .panel-cta {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--black);
+      border: 1.5px solid rgba(0,0,0,0.25); padding: 0.85rem 1.75rem;
+      transition: color var(--trans), border-color var(--trans), background var(--trans);
+      width: fit-content; text-decoration: none;
+    }
+    .arrow {
+      opacity: 0; transform: translateX(-6px);
+      transition: opacity var(--trans), transform var(--trans);
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      html, body { overflow: auto; }
+      #split { flex-direction: column; height: auto; min-height: 100vh; }
+      .panel { min-height: 50vh; border-right: none !important; border-bottom: 1px solid var(--warm-gray); }
+      .panel:hover { flex: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="intro-logo">
+    <img src="logo-rethink.png" alt="The Re:think"/>
+  </div>
+</div>
+
+<!-- SPLIT -->
+<div id="split">
+
+  <!-- LEFT: Individual -->
+  <div class="panel" id="panel-individual" onclick="window.location='https://www.therethink.com'">
+    <div class="panel-content">
+      <img src="logo-rethink.png" alt="The Re:think" class="panel-logo"/>
+      <div class="panel-label">For you</div>
+      <div class="panel-title">individual.</div>
+      <div class="panel-tags">
+        <span class="panel-tag">Personal Development</span>
+        <span class="panel-tag">Parenting</span>
+        <span class="panel-tag">Relationships</span>
+      </div>
+      <a class="panel-cta">Explore The Re:think <span class="arrow">→</span></a>
+    </div>
+  </div>
+
+  <!-- RIGHT: Business -->
+  <div class="panel" id="panel-business" onclick="window.location='rethink-lab.html'">
+    <div class="panel-content">
+      <img src="logo-rethink-lab.png" alt="The Re:think Lab" class="panel-logo"/>
+      <div class="panel-label">For your organization</div>
+      <div class="panel-title">business.</div>
+      <div class="panel-tags">
+        <span class="panel-tag">Corporate</span>
+        <span class="panel-tag">Family Office</span>
+        <span class="panel-tag">Startup / Entrepreneur</span>
+      </div>
+      <a class="panel-cta">Explore Re:think Lab <span class="arrow">→</span></a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  setTimeout(() => document.getElementById('intro').classList.add('hidden'), 1800);
+</script>
+</body>
+</html>
