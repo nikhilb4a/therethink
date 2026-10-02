@@ -629,7 +629,21 @@
     <li class="nav-item"><a href="lab-contact.html">Contact</a></li>
   </ul>
   <a href="lab-contact.html" class="nav-cta">Book a Strategy Call</a>
+  <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<!-- Mobile menu (shown via the hamburger at ≤768px) -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="rethink-lab.html" class="active" onclick="closeMobileMenu()">Home</a>
+  <a href="lab-who-we-serve.html" onclick="closeMobileMenu()">Who We Work With</a>
+  <a href="lab-approach.html" onclick="closeMobileMenu()">Our Philosophy</a>
+  <a href="lab-how-we-work.html" onclick="closeMobileMenu()">How We Work</a>
+  <a href="lab-team.html" onclick="closeMobileMenu()">Team</a>
+  <a href="lab-contact.html" onclick="closeMobileMenu()">Contact</a>
+  <a href="lab-contact.html" class="mobile-cta" onclick="closeMobileMenu()">Book a Strategy Call</a>
+</div>
+
 
 <!-- ── HERO — playbook image replacing geometry ── -->
 <section id="hero">
@@ -906,15 +920,33 @@
   // MOBILE HAMBURGER
   function openMobileMenu() {
     var m = document.getElementById('mobile-menu');
+    var b = document.getElementById('nav-hamburger');
     m.style.display = 'flex';
     setTimeout(function(){ m.classList.add('open'); }, 10);
+    b.classList.add('open');
+    b.setAttribute('aria-expanded', 'true');
+    b.setAttribute('aria-label', 'Close menu');
     document.body.style.overflow = 'hidden';
   }
   function closeMobileMenu() {
     var m = document.getElementById('mobile-menu');
+    var b = document.getElementById('nav-hamburger');
     m.classList.remove('open');
+    b.classList.remove('open');
+    b.setAttribute('aria-expanded', 'false');
+    b.setAttribute('aria-label', 'Open menu');
     setTimeout(function(){ m.style.display = 'none'; document.body.style.overflow = ''; }, 300);
   }
+  function toggleMobileMenu() {
+    if (document.getElementById('mobile-menu').classList.contains('open')) closeMobileMenu();
+    else openMobileMenu();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('mobile-menu').classList.contains('open')) closeMobileMenu();
+  });
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768 && document.getElementById('mobile-menu').classList.contains('open')) closeMobileMenu();
+  });
   // FLIP CARDS — tap on mobile
   document.querySelectorAll('.flip-card, .ppp-card').forEach(function(card) {
     card.addEventListener('click', function() {
