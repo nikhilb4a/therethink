@@ -1,0 +1,35 @@
+# ── Domain layout ─────────────────────────────────────────────
+#   www.therethink.com   → this site (landing page + Re:think Lab)
+#   therethink.com       → redirects to www automatically (Netlify)
+#   me.therethink.com   → personal coaching site (Squarespace)
+#   lab.therethink.com   → old address, permanently redirected here
+
+# Old lab subdomain → same page on the main domain
+http://lab.therethink.com/*    https://www.therethink.com/:splat  301!
+https://lab.therethink.com/*   https://www.therethink.com/:splat  301!
+
+# Pages that used to live on the Squarespace site at therethink.com
+# → same page on the personal site, so old links and bookmarks keep working
+/rethinkhome            https://me.therethink.com/rethinkhome            301
+/about                  https://me.therethink.com/about                  301
+/aboutsanam             https://me.therethink.com/aboutsanam             301
+/why-the-rethink        https://me.therethink.com/why-the-rethink        301
+/work-with-me           https://me.therethink.com/work-with-me           301
+/services               https://me.therethink.com/services               301
+/session                https://me.therethink.com/session                301
+/coaching-appointment   https://me.therethink.com/coaching-appointment   301
+/send-an-inquiry        https://me.therethink.com/send-an-inquiry        301
+/workshop               https://me.therethink.com/workshop               301
+/events                 https://me.therethink.com/events                 301
+/bookshelf              https://me.therethink.com/bookshelf              301
+/burnout-workbook       https://me.therethink.com/burnout-workbook       301
+/shop                   https://me.therethink.com/shop                   301
+/shop/*                 https://me.therethink.com/shop/:splat            301
+/cart                   https://me.therethink.com/cart                   301
+/blog                   https://me.therethink.com/blog                   301
+/blog/*                 https://me.therethink.com/blog/:splat            301
+/meal-plans             https://me.therethink.com/meal-plans             301
+/meal-plans/*           https://me.therethink.com/meal-plans/:splat      301
+/seasonal-recipes       https://me.therethink.com/seasonal-recipes       301
+/seasonal-recipes/*     https://me.therethink.com/seasonal-recipes/:splat 301
+/s/*                    https://me.therethink.com/s/:splat               301
