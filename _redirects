@@ -1,3 +1,6 @@
+# Keep repo-only files off the public site
+/CLAUDE.md   /not-found   404!
+
 # ── Domain layout ─────────────────────────────────────────────
 #   www.therethink.com   → this site (landing page + Re:think Lab)
 #   therethink.com       → redirects to www automatically (Netlify)
